@@ -1,25 +1,22 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
-import './App.css';
+//import './App.css';
 
 class App extends Component {
+  constructor(){
+    super();
+    this.state={value:"hello "};
+    this.handleChange = this.handleChange.bind(this);
+  }
+  handleChange(event){
+      this.setState({value: event.target.value});
+  }
   render() {
+    var value = this.state.value;
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+        <input type="text" value={this.state.value} onChange={this.handleChange}/>
+        <h1>{value}</h1>
       </div>
     );
   }
